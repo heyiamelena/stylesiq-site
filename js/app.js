@@ -1,4 +1,4 @@
-/* app.js — StyleIQ Static Site Client Logic */
+/* app.js — StylesIQ Static Site Client Logic */
 
 // ==========================================
 // 1. Data Arrays (with updated asset paths)
@@ -112,7 +112,7 @@ const techniques = [
 // 2. Navigation & SPA Section Router
 // ==========================================
 
-const sections = ['home', 'shop', 'studio', 'method', 'about'];
+const sections = ['home', 'shop', 'studio', 'method', 'inspiration'];
 
 function showSection(activeId) {
   // Collapse mobile menu if open
