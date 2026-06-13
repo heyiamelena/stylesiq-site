@@ -367,23 +367,63 @@ main > section {
 }
 
 .hero-section {
-  height: 100vh;
-  width: 100%;
-  position: relative;
-  background-color: var(--bg-dark);
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  overflow: hidden;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--bg-dark);
 }
 
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  filter: grayscale(1);
-  opacity: 0.7;
+@media (min-width: 768px) {
+  .hero-section {
+    flex-direction: row;
+    height: 100vh;
+    align-items: stretch;
+  }
+}
+
+.hero-content-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 1.5rem 4rem 1.5rem; /* space from sticky header on mobile */
+  background-color: var(--bg-dark);
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .hero-content-col {
+    padding: 6rem 4rem 4rem 4rem; /* clear header and align nicely on desktop */
+    max-width: 50%;
+  }
+}
+
+.hero-content-wrap {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .hero-content-wrap {
+    margin: 0; /* Align left on desktop */
+  }
+}
+
+.hero-media-col {
+  flex: 1;
+  height: 55vh; /* image height on mobile */
+  background-color: var(--bg-dark);
+  overflow: hidden;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .hero-media-col {
+    height: auto;
+    max-width: 50%;
+  }
 }
 
 .hero-image {
@@ -393,44 +433,21 @@ main > section {
   display: block;
 }
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(15, 15, 15, 0.45); /* slightly darker overlay to improve copy readability */
-}
-
-.hero-content {
-  position: relative;
-  z-index: 10;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  width: 100%;
-  max-width: 850px;
-}
-
-@media (min-width: 768px) {
-  .hero-content {
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
-}
-
 .hero-title {
   color: var(--bg-primary);
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-size: clamp(1.35rem, 3vw, 1.85rem); /* smaller significantly */
   text-transform: none;
-  line-height: 1.15;
-  margin-bottom: 1.25rem;
-  max-width: 780px;
+  line-height: 1.25;
+  margin-bottom: 1rem;
 }
 
 .hero-subtitle {
   color: var(--accent);
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem); /* scaled down accordingly */
   text-transform: none;
   font-weight: 400;
   letter-spacing: normal;
@@ -438,56 +455,44 @@ main > section {
 }
 
 .hero-tagline {
-  color: var(--bg-primary);
-  opacity: 0.85;
+  color: #FAFAF8 !important; /* contrast color: light primary */
+  opacity: 1 !important; /* full contrast */
   font-family: var(--font-mono);
   font-size: 0.8rem;
   line-height: 1.6;
-  max-width: 650px;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.25rem;
 }
 
 .hero-ctas {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
 }
 
 @media (min-width: 576px) {
   .hero-ctas {
     flex-direction: row;
-    align-items: center;
   }
 }
 
 .btn-primary-hero {
-  background-color: var(--bg-primary);
-  color: var(--bg-dark);
+  background-color: var(--bg-primary) !important;
+  color: var(--bg-dark) !important;
   padding: 1.15rem 2.25rem;
   display: inline-block;
   text-align: center;
   font-weight: 700;
   border: 1px solid var(--bg-primary) !important;
+  transition: all 0.3s ease;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .btn-primary-hero:hover {
-  background-color: transparent;
-  color: var(--bg-primary);
-}
-
-.btn-secondary-hero {
-  background-color: transparent;
-  border: 1px solid rgba(250, 250, 248, 0.35) !important;
-  color: rgba(250, 250, 248, 0.85);
-  padding: 0.85rem 1.75rem;
-  display: inline-block;
-  text-align: center;
-}
-
-.btn-secondary-hero:hover {
+  background-color: transparent !important;
+  color: var(--bg-primary) !important;
   border-color: var(--bg-primary) !important;
-  color: var(--bg-primary);
-  background-color: rgba(250, 250, 248, 0.05);
 }
 
 /* Card layout (Three Paths) */
