@@ -63,9 +63,9 @@ const products = [
 
 const workshopsData = {
   'Current Season': [
-    { id: '01', name: "HEARTS of Love", desc: "Embroider heart motifs and add red ribbon details to your chosen garment.", duration: '2 hrs', capacity: '12 SPOTS REMAINING', price: '$100', type: 'SEASONAL', stripeLink: 'https://book.stripe.com/28E5kCgMd7lq6i68qNfYY03' },
-    { id: '02', name: 'Florals to Bloom', desc: 'Learn floral embroidery and fabric painting techniques for warm-weather pieces.', duration: '2.5 hrs', capacity: '10 SPOTS REMAINING', price: '$100', type: 'SEASONAL', stripeLink: 'https://book.stripe.com/28E5kCgMd7lq6i68qNfYY03' },
-    { id: '03', name: 'Holiday Sparkle', desc: 'Crystal application and gold hardware work to elevate pieces for the festive season.', duration: '3 hrs', capacity: '8 SPOTS REMAINING', price: '$100', type: 'SEASONAL', stripeLink: 'https://book.stripe.com/28E5kCgMd7lq6i68qNfYY03' }
+    { id: '01', name: "HEARTS of Love", desc: "Embroider heart motifs and add red ribbon details to your chosen garment.", duration: '2 hrs', capacity: '12 SPOTS REMAINING', price: '$150', type: 'SEASONAL', stripeLink: 'https://book.stripe.com/28E5kCgMd7lq6i68qNfYY03' },
+    { id: '02', name: 'Denim & Paint', desc: 'Hand-paint your own denim, jacket, or any piece you bring in. Create a one-of-a-kind statement piece with the words, images, or symbols that are yours alone. No two pieces leave this studio the same.', duration: '2.5 hrs', capacity: '10 SPOTS REMAINING', price: '$150', type: 'SEASONAL', stripeLink: 'https://book.stripe.com/28E5kCgMd7lq6i68qNfYY03' },
+    { id: '03', name: 'Holiday Sparkle', desc: 'Crystal application and gold hardware work to elevate pieces for the festive season.', duration: '3 hrs', capacity: '8 SPOTS REMAINING', price: '$150', type: 'SEASONAL', stripeLink: 'https://book.stripe.com/28E5kCgMd7lq6i68qNfYY03' }
   ],
   'By Craft': [
     { id: '04', name: 'Crystal Application Masterclass', desc: 'Learn professional-grade crystal placement: scatter, cluster, and architectural techniques.', duration: '2 hrs', capacity: '8 SPOTS REMAINING', price: '$100', type: 'TECHNIQUE', stripeLink: 'https://book.stripe.com/28E5kCgMd7lq6i68qNfYY03' },
@@ -76,10 +76,7 @@ const workshopsData = {
     { id: '07', name: 'Bachelorette Party', desc: "Customize jackets or accessories for the whole crew. We handle materials, you bring the energy.", duration: '2.5 hrs', capacity: 'CUSTOM', price: '$100', type: 'PRIVATE', stripeLink: 'https://book.stripe.com/28E5kCgMd7lq6i68qNfYY03' },
     { id: '08', name: 'Corporate Team Offsite', desc: 'Science-backed team creative reset. Cortisol down, connection up.', duration: '2 hrs', capacity: 'CUSTOM', price: '$100', type: 'PRIVATE', stripeLink: 'https://book.stripe.com/28E5kCgMd7lq6i68qNfYY03' }
   ],
-  'Open Studio': [
-    { id: '09', name: 'Tuesday Drop-In', desc: 'Show up. Make something. No booking required, just pay at the door.', duration: '2 hrs', capacity: 'WALK-IN', price: '$100', type: 'OPEN STUDIO', stripeLink: 'https://book.stripe.com/28E5kCgMd7lq6i68qNfYY03' },
-    { id: '10', name: 'Saturday Morning Studio', desc: "The best way to start a weekend. Coffee, crafts, community.", duration: '2 hrs', capacity: 'WALK-IN', price: '$100', type: 'OPEN STUDIO', stripeLink: 'https://book.stripe.com/28E5kCgMd7lq6i68qNfYY03' }
-  ]
+  'Open Studio': []
 };
 
 const techniques = [
@@ -360,6 +357,21 @@ function renderWorkshops() {
   if (!grid) return;
 
   grid.innerHTML = '';
+
+  if (activeStudioTab === 'Open Studio') {
+    grid.style.display = 'block';
+    grid.innerHTML = `
+      <div class="open-studio-cta fade-up-element" style="text-align: center; max-width: 600px; margin: 4rem auto; padding: 4.5rem 2rem; border: 1px solid var(--border); background-color: var(--bg-card); transition: all 0.3s ease;">
+        <h2 class="brand-h2" style="font-size: 2.25rem; margin-bottom: 1.5rem; font-family: var(--font-serif); font-style: italic; color: var(--text-headline); text-transform: none;">Host Your Event Here</h2>
+        <p class="brand-body" style="font-size: 1rem; line-height: 1.7; color: var(--text-body); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto;">Private sessions, team resets, or your own creative gathering — our studio is available for bookings. Tell us what you have in mind.</p>
+        <a href="mailto:hello@stylesiq.com" class="btn btn-accent" style="display: inline-block; padding: 1.15rem 2.25rem; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;">Contact Us</a>
+      </div>
+    `;
+    initScrollAnimations();
+    return;
+  }
+
+  grid.style.display = '';
   const data = workshopsData[activeStudioTab] || [];
 
   data.forEach(ws => {
