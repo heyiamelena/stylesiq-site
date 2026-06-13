@@ -419,7 +419,7 @@ main > section {
   color: var(--bg-primary);
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
   text-transform: none;
   line-height: 1.15;
   margin-bottom: 1.25rem;
@@ -430,7 +430,7 @@ main > section {
   color: var(--accent);
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
   text-transform: none;
   font-weight: 400;
   letter-spacing: normal;
