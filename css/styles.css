@@ -247,6 +247,11 @@ header.sticky-header .logo {
   font-size: 1.25rem; /* 20px */
   font-weight: 400;
   letter-spacing: -0.02em;
+  color: var(--bg-primary);
+  transition: color 0.3s ease;
+}
+
+header.sticky-header.scrolled .logo {
   color: var(--text-headline);
 }
 
@@ -261,15 +266,25 @@ header.sticky-header nav ul li a {
   font-family: var(--font-sans);
   font-weight: 400; /* Regular for UI */
   font-size: 13px;
-  color: var(--text-body);
+  color: rgba(250, 250, 248, 0.75);
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  transition: color 0.3s ease;
 }
 
 header.sticky-header nav ul li a:hover,
 header.sticky-header nav ul li a.active {
-  color: var(--text-headline);
+  color: var(--bg-primary);
   font-weight: 500;
+}
+
+header.sticky-header.scrolled nav ul li a {
+  color: var(--text-body);
+}
+
+header.sticky-header.scrolled nav ul li a:hover,
+header.sticky-header.scrolled nav ul li a.active {
+  color: var(--text-headline);
 }
 
 /* Mobile Hamburger Menu */
@@ -279,6 +294,11 @@ header.sticky-header nav ul li a.active {
   cursor: pointer;
   display: none;
   z-index: 110;
+  color: var(--bg-primary);
+  transition: color 0.3s ease;
+}
+
+header.sticky-header.scrolled .hamburger-btn {
   color: var(--text-headline);
 }
 
